@@ -1,10 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base/base.html' %}
+{% block content %}
+<!--carousel-->
+<div class="container-fluid" style="padding-bottom : 5%">
+  <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style=" background-color: #1b1e21">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-interval="30000" style="left: 5%">
+        <a href="/laptop_A/">
+          <img src="../../static/images/laptop_A.png" class="d-block w-40" alt="..." height="400">
+        </a>
+        <div class="carousel-caption d-none d-md-block" style="left: 30%; padding-bottom: 180px;">
+          <h5> Laptop A</h5>
+          <p>Description of the laptop A</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="30000" style="left: 5%">
+        <a href="/laptop_B/">
+          <img src="../../static/images/laptop_B.png" class="d-block w-40" alt="..." height="400">
+        </a>
+        <div class="carousel-caption d-none d-md-block" style="left: 30%; padding-bottom: 180px">
+          <h5>Laptop B</h5>
+          <p>Description of the laptop B</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="30000" style="left: 5%">
+        <a href="/laptop_C/">
+          <img src="../../static/images/laptop_C.png" class="d-block w-40" alt="..." height="400">
+        </a>
+        <div class="carousel-caption d-none d-md-block" style="left: 30%; padding-bottom: 180px">
+          <h5>Laptop C</h5>
+          <p>Description of the laptop C</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </button>
+  </div>
+</div>
+
+<!--card-->
+<div style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%">
+  <h1>Ranking</h1>
+  <div style="padding-left: 5%; padding-right: 5%; padding-top: 3%; display: flex;">
+    <div style="padding-right: 9.5%">
+      <div class="card" style="width: 20rem; height: 20rem; border: 2px solid black;" >
+        <a href="/laptop_A/">
+          <img src="../../static/images/laptop_A.png" class="card-img-top" alt="..." height="220" style="border-bottom: 2px solid black;">
+        </a>
+        <div class="card-body">
+          <p class="card-text">laptop1에 대한 설명.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-right: 9.5%">
+      <div class="card" style="width: 20rem; height: 20rem; border: 2px solid black;">
+        <a href="/laptop_B/">
+          <img src="../../static/images/laptop_B.png" class="card-img-top" alt="..." height="220" style="border-bottom: 2px solid black;">
+        </a>
+        <div class="card-body">
+          <p class="card-text">laptop2에 대한 설명.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="width: 20rem; height: 20rem; border: 2px solid black;">
+        <a href="/laptop_C/">
+        <img src="../../static/images/laptop_C.png" class="card-img-top" alt="..." height="220" style="border-bottom: 2px solid black;">
+        </a>
+        <div class="card-body">
+          <p class="card-text">laptop3에 대한 설명.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

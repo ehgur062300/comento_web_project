@@ -1,20 +1,24 @@
-{% include 'base/navbar.html' %}
-
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#!"><h3>A company</h3></a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: white; border-bottom: 1px solid #1b1e21">
+    <a class="navbar-brand nav-link" href="/home/"><h3>A company</h3></a>
     <div class="container px-5">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <a class="nav-link" href="#!">
+                <a class="nav-link" href="/search/">
                     <img class="img-fluid" src="../../static/images/search.png" alt="검색" width="20" height="20" />
                 </a>
 
-                <a class="nav-link" href="#!">
-                    <img class="img-fluid" src="../../static/images/mypage.png" alt="마이페이지" width="22" height="22" />
-                </a>
+                <div class="dropdown" style="padding-top:7px; padding-left: 13px; padding-right: 13px">
+                    <img class="img-fluid dropdown-toggle" data-toggle="dropdown"  aria-expanded="false"
+                         src="../../static/images/mypage.png" alt="마이페이지" width="22" height="22"/>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">로그인</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">주문/배송 조회</a>
+                    </div>
+                </div>
 
-                <a class="nav-link" href="#!">
+                <a class="nav-link" href="/mysite/">
                     <img class="img-fluid" src="../../static/images/cart.png" alt="장바구니" width="22" height="22" />
                 </a>
 
