@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <title>Mysite</title>
+      <!-- Favicon-->
+      <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+      <!-- Core theme CSS (includes Bootstrap)-->
+      {% block css %}
+      <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+      {% endblock css %}
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <div>
+            <main>
+            {% block content %}
+            {% endblock content %}
+            </main>
+            <footer class="py-5 bg-dark"></footer>
+        </div>
+    </nav>
+    </body>
+</html>
