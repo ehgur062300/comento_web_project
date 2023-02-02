@@ -1,0 +1,65 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div style="background-color: #1b1e21">
+    <div class="container" style="padding-top: 10%; padding-bottom: 15%;">
+        <div style="width: 50%; margin: auto; padding-bottom: 10%; border: solid black; background-color: white">
+            <h1 align="center" style="padding-bottom: 10%; padding-top: 5%">로그인</h1>
+            <form method="POST" action="{% url 'users:login' %}" style="width: 80%; margin: auto">
+                {% csrf_token %}
+                {% include "users/form_errors.html" %}
+                <input type="ID" class="form-control" name="username" aria-describedby="IDHelp" placeholder="아이디"
+                       style="border: solid black; font-size: 20px">
+
+                <p style="padding-top: 10%"></p>
+                <input type="password" class="form-control"  name="password" placeholder="비밀번호 입력"
+                        style="border: solid black; font-size: 20px">
+
+                <p align="center" style="padding-top: 5%">
+                    <input class="btn btn-primary" type="submit" value="로그인">
+                </p>
+
+                <p align="center" style="padding-top: 10%">
+                    <smal>혹시 계정이 없으신가요? <a href="{% url 'users:signup' %}" style="color: gray">| 회원가입</a></smal>
+                </p>
+            </form>
+            <div align="center" style="color: red">
+                {% if error %}
+                {{error}}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#button_join').click(function () {
+        console.log('버튼 클릭했습니다.');
+        const email = $('#input_email').val()
+        const name = $('#input_name').val()
+        const nickname = $('#input_nickname').val()
+        const password = $('#input_password').val()
+
+        $.ajax({
+            url: "http://127.0.0.1:8000/join/",
+            method: "POST",
+            data: {
+                email: email,
+                name: name,
+                nickname: nickname,
+                password: password
+            },
+            success: function (data) {
+                console.log("성공");
+                alert("회원가입 성공");
+            },
+            error: function (request, status, error) {
+                console.log("에러");
+                alert("회원가입 실패");
+            },
+            complete: function () {
+                console.log("무조건실행");
+            }
+        });
+
+    });
+</script>
+{% endblock %}

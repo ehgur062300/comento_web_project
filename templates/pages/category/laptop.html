@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load humanize %}
+<div align="center" style="padding-top: 15px;">
+    <h1>노트북</h1>
+    <hr size="50%" width="80%">
+</div>
+{% if content_list %}
+    {% for product in content_list %}
+    <div align="center" style="padding-top: 15px;">
+        <div style="padding-top: 15px">
+            <div align="left" style="border: 3px solid lightgray; border-radius: 10px;
+                 width: 65%; box-shadow: 5px 5px 5px black;">
+                <div style="display: flex; padding-left: 50px;">
+                    <img src=../../{{ product.image }} alt=".." width="250" height="190">
+                    <div style="padding-top: 20px; padding-left: 20px">
+                        <h3>{{product.name}}</h3>
+                        <h6>{{ product.description}}</h6>
+                        <br>
+                        <h6 style="color: gray">{{product.price|intcomma}}</h6>
+                    </div>
+                </div>
+                <hr width="90%" style="margin: auto; height: 1px;">
+                <div align="right" style="padding: 15px 50px 10px 0">
+                    <div align="center" style="border-radius: 20px; border: 2px solid lightgray; width: 13%;
+                         padding: 5px 0 5px 0;">
+                        <form action="/{{product.name}}/" method="post">
+                            <input type="hidden" name="name" value={{product.name}}>
+                            <input type="hidden" name="image" value={{product.image}}>
+                            <input type="hidden" name="description" value={{product.description}}>
+                            <input type="hidden" name="price" value={{product.price}}>
+                            <a href="/{{product.name}}/" style="text-decoration: none" type="submit">
+                                <h5 style="margin: auto; color: cornflowerblue">상세보기</h5>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+<div class="container">
+    <h1 style="text-align: center"> 장바구니가 비어있습니다</h1>
+</div>
+{% endif %}
+{% endblock %}
+

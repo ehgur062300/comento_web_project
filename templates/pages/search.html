@@ -1,31 +1,31 @@
 {% extends "base/base.html" %}
 {% block content %}
-  <div class="container" style="padding-left: 10%; padding-top: 8%;">
-    <h1><input id="myInput" placeholder="검색어를 입력해주세요."
-          style="border: 2px solid black;
-          width: 90%; color: lightgray;
-          border-radius: 20px;">
-    </h1>
-    <button id="myBtn" onclick="javascript:alert(input.value)" hidden="true">Button</button>
-  </div>
+<div class="container" style="padding-left: 10%; padding-top: 8%;">
+  <h1><input id="myInput" placeholder="검색어를 입력해주세요."
+        style="border: 2px solid black;
+        width: 90%; color: lightgray;
+        border-radius: 20px;">
+  </h1>
+  <button id="myBtn" onclick="javascript:alert(input.value)" hidden="true">Button</button>
+</div>
 
 
 
-  <div style="padding-left: 22%; padding-top: 5%; padding-bottom: 15%">
-    <h2><b>인기 검색어</b></h2>
-    <a href="/laptop_A/" style="color: black"><p>1. Laptop_A</p></a>
-    <a href="/laptop_A/" style="color: black"><p>2. Laptop_B</p></a>
-    <a href="/laptop_A/" style="color: black"><p>3. Laptop_C</p></a>
-  </div>
+<div style="padding-left: 22%; padding-top: 5%; padding-bottom: 15%">
+  <h2><b>인기 검색어</b></h2>
+  <a href="/laptop_A/" style="color: black"><p>1. Laptop_A</p></a>
+  <a href="/laptop_A/" style="color: black"><p>2. Laptop_B</p></a>
+  <a href="/laptop_A/" style="color: black"><p>3. Laptop_C</p></a>
+</div>
 
 
-  <script>
-    var input = document.getElementById("myInput");
-    input.addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("myBtn").click();
-      }
-    });
-    </script>
+<script>
+  var input = document.getElementById("myInput");
+  input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("myBtn").click();
+    }
+  });
+  </script>
 {% endblock %}
