@@ -1,10 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base/base.html' %}
+{% block content %}
+{% load humanize %}
+{% if content_list %}
+    {% for product in content_list %}
+    <div class="container" style="display: flex; justify-content: center;">
+        <div>
+            <img src="../../{{product.image}}>" class="d-block w-40"
+                 alt="{{product.name}}" height="400">
+        </div>
+        <div style="padding-top: 4.5%; padding-left: 5%; padding-right: 10%;">
+            <h2 style="line-height: 50%">{{product.name}}</h2>
+            <p>제품번호 {{product.id}}</p>
+            {{product.description }}
+
+            <hr>
+            <form name="form1" method="post">
+                <div style="display: flex;">
+                    <b><div>수량선택</div></b>
+                    <h5><div style="display: flex; padding-left: 170px">
+                        <input type="button" name = "minus"
+                               style="color: black; background-color: white; border: none" value=" - ">
+
+                        <input type="text" name="result"
+                               style="border:none; width: 100px; text-align: center;
+                               padding-right: 30px; padding-left: 30px" value="1">
+
+                        <input type="button" name = "plus"
+                               style="color: black; background-color: white; border: none" value=" + ">
+                    </div></h5>
+                </div>
+
+                <hr>
+                <div style="display: flex;">
+                    <b><div style="padding-right: 160px">총 금액</div></b>
+                    <h5><input type="hidden" name="sell_price" value="{{product.price | intcomma}}"></h5>
+                    <h5 style="color: red;"><input type="text" name="sum" style="border: none; width: 150px" readonly>원</h5>
+                </div>
+            </form>
+            <div style="display: flex; padding-left: 20%">
+                <a style="padding-right: 10px" href="/mysite">
+                    <button type="button" class="btn btn-light" style="border: solid lightgray"><b>장바구니</b></button>
+                </a>
+
+                <a href="#">
+                    <button type="button" class="btn btn-danger" style="border: solid lightcoral"><b>구매하기</b></button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+<script>
+    const formform = document.getElementByName("form1"),
+        sell_price = document.sell_price,
+        result = document.result,
+        plus = document.querySelector(".plus"),
+        minus = document.querySelector(".minus"),
+        sum = document.sum;
+
+/*    function num(totalprice) {
+        let plus = document.querySelector(".plus")
+        let minus = document.querySelector(".minus")
+        let result = document.querySelector("#result")
+        let totalcost = document.querySelector(".totalcost")
+        let i = 1;*/
+    if(formform) {
+        sum.value = sell_price.value;
+        let amountval = result.value,
+            sumval = sum.value,
+            priceval = sell_price.value;
+
+        if (plus) {
+            plus.addEventListener("click", function () {
+                amountval++;
+                sumval = amountval * priceval;
+                result.value = amountval;
+                sum.value = sumval;
+                console.log(amountval, sumval, priceval);
+
+                // result.textContent = i;
+                // let totalcostNum = i * totalprice;
+                // totalcost.textContent = totalcostNum.toLocaleString() + "원";
+            })
+        }
+        if (minus) {
+            minus.addEventListener("click", function () {
+                if (amountval > 1) {
+                    amountval--;
+                    sumval = amountval * priceval;
+                    result.value = amountval;
+                    sum.value = sumval;
+                    console.log(amountval, sumval, priceval);
+                } else {
+                    amountval = 1;
+                }
+
+                // i--;
+                // if (i == 0) {
+                //     i = 1;
+                // }
+                // result.textContent = i;
+                // let totalcostNum = i * totalprice;
+                // totalcost.textContent = totalcostNum.toLocaleString() + "원";
+            })
+        }
+    }
+</script>
+
+{% else %}
+    <div class="container">
+        <h1 style="text-align: center"> 등록된 상품이 없습니다.</h1>
+    </div>
+{% endif %}
+{% endblock %}

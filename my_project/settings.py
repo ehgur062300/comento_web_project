@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'mysite',
     'pages',
-    'users',
+    'category',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [

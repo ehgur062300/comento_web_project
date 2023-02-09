@@ -1,4 +1,47 @@
 {% extends 'base/base.html' %}
 {% block content %}
-뷰티 page 입니다.
+{% load humanize %}
+<div align="center" style="padding-top: 15px;">
+    <h1>뷰티</h1>
+    <hr size="50%" width="80%">
+</div>
+{% if content_list%}
+    {% for product in content_list %}
+        {% if product.category.category == '뷰티' %}
+            <div align="center" style="padding-top: 15px;">
+                <div style="padding-top: 15px">
+                    <div align="left" style="border: 3px solid lightgray; border-radius: 10px;
+                         width: 65%; box-shadow: 5px 5px 5px black;">
+                        <div style="display: flex; padding-left: 50px;">
+                            <img src=../../{{ product.image }} alt=".." width="250" height="190">
+                            <div style="padding-top: 20px; padding-left: 20px">
+                                <h3>{{product.name}}</h3>
+                                <small>제품번호 {{product.id}}</small>
+                                <h6>{{product.description}}</h6>
+                                <br>
+                                <h6 style="color: gray">{{product.price|intcomma}}원</h6>
+                            </div>
+                        </div>
+                        <hr width="90%" style="margin: auto; height: 1px;">
+                        <div align="right" style="padding: 15px 50px 10px 0">
+                            <div align="center" style="border-radius: 20px; border: 2px solid lightgray; width: 13%; padding: 5px 0 5px 0;">
+                                <a href="/{{product.name}}/" style="text-decoration: none" type="submit">
+                                    <h5 style="margin: auto; color: cornflowerblue">상세보기</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+        <h1>야 다시 해</h1>
+        {% endif %}
+    {% endfor %}
+{% else %}
+<div class="container">
+    <h1 style="text-align: center"> 상품이 없습니다</h1>
+</div>
+{% endif %}
 {% endblock %}
+
+전

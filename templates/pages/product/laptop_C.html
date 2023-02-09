@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="container" style="display: flex; justify-content: center;">
+    <div>
+        <img src="../../../static/images/laptop_C.png" class="d-block w-40" alt="..." height="400">
+    </div>
+    <div style="padding-top: 4.5%; padding-left: 5%; padding-right: 10%;">
+        <h2 style="line-height: 50%">Laptop_C</h2>
+        <p>a33989123</p>
+        글은 상품에 대한 상세설명 및 스펙소개입니다.
 
-</body>
-</html>
+        <hr>
+        <div style="display: flex;">
+            <b><div>수량선택</div></b>
+            <h5><div style="display: flex; padding-left: 170px">
+                <a href="#" class = "minus" style="color: black;">-</a>
+                <span id="result" style="text-align: center;padding-right: 30px; padding-left: 30px">1</span>
+                <a href="#" class = "plus" style="color: black">+</a>
+            </div></h5>
+        </div>
+
+        <hr>
+        <div style="display: flex;">
+            <b><div style="padding-right: 160px">총 금액</div></b>
+            <h5><span class="totalcost" style="color: red;">1,750,000원</span></h5>
+        </div>
+
+        <div style="display: flex; padding-left: 20%">
+            <a style="padding-right: 10px" href="/mysite">
+                <button type="button" class="btn btn-light" style="border: solid lightgray"><b>장바구니</b></button>
+            </a>
+            <a href="#">
+                <button type="button" class="btn btn-danger" style="border: solid lightcoral"><b>구매하기</b></button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    let plus = document.querySelector(".plus")
+    let minus = document.querySelector(".minus")
+    let result = document.querySelector("#result")
+    let totalcost = document.querySelector(".totalcost")
+    let i = 1;
+
+    plus.addEventListener("click", () => {
+        i++;
+        result.textContent = i;
+        let totalcostNum = i*1750000;
+        totalcost.textContent = totalcostNum.toLocaleString() + "원";
+    })
+
+    minus.addEventListener("click", () => {
+        i--;
+        if(i == 0) { i = 1; }
+        result.textContent = i;
+        let totalcostNum = i*1750000;
+        totalcost.textContent = totalcostNum.toLocaleString() + "원";
+    })
+</script>
+{% endblock %}

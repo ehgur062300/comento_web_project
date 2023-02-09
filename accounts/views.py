@@ -1,11 +1,11 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import UserForm
+from .forms import SignupForm
 
 
 def signup(request):
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -15,5 +15,5 @@ def signup(request):
             return redirect('http://127.0.0.1:8000/home/')
 
     else :
-        form = UserForm()
-    return render(request, 'users/signup.html', {'form': form})
+        form = SignupForm()
+    return render(request, 'accounts/signup.html', {'form': form})
